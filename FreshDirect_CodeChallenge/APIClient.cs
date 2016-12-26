@@ -10,8 +10,10 @@ namespace FreshDirect_CodeChallenge
 	{
 
 		static string authUrl = "https://api.twitter.com/oauth2/token";
-		//static string userTimelineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
-		public delegate void handler(string x);
+		static string userTimelineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+		public delegate void handler(string bearerToken);
+		public delegate void completionHandler(Dictionary<string, Object>[] jsonDic);
+
 
 
 		// Encode consumer key and secret to Base64 encode
@@ -42,6 +44,28 @@ namespace FreshDirect_CodeChallenge
 
 			});
 
+
+		}
+
+		public static void getTweets(string userName, completionHandler json )
+		{
+			APIClient.getBearerToken((bearerToken) =>
+			{
+				
+				var client1 = new RestClient(userTimelineUrl);
+				var request1 = new RestRequest(Method.GET);
+				request1.AddHeader("Authorization", "Bearer " + bearerToken);
+				request1.AddParameter("screen_name", userName);
+				request1.AddParameter("count", "12");
+
+				client1.ExecuteAsync(request1, response =>
+				{
+					Dictionary<string, object> [] responseJson = JsonConvert.DeserializeObject<Dictionary<string, object>[]>(response.Content);
+					json(responseJson);
+					Console.WriteLine(responseJson.Length);
+				});
+
+			});
 
 		}
 

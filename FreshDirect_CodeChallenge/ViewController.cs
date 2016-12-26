@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Foundation;
 using UIKit;
 
 namespace FreshDirect_CodeChallenge
@@ -15,11 +15,10 @@ namespace FreshDirect_CodeChallenge
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
-			APIClient.getBearerToken((bearerToken) =>
+			APIClient.getTweets("michellebklynn", (jsonDic) =>
 			{
-				Console.WriteLine("HIIIIIIII");
-				Console.WriteLine(bearerToken);
-			});
+				Console.WriteLine(jsonDic);
+			})	;
 		}
 
 		public override void DidReceiveMemoryWarning()
