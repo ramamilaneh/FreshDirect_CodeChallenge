@@ -15,6 +15,11 @@ namespace FreshDirect_CodeChallenge
 		{
 			base.ViewDidLoad();
 			// Perform any additional setup after loading the view, typically from a nib.
+			APIClient.getBearerToken((bearerToken) =>
+			{
+				Console.WriteLine("HIIIIIIII");
+				Console.WriteLine(bearerToken);
+			});
 		}
 
 		public override void DidReceiveMemoryWarning()
