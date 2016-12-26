@@ -8,7 +8,7 @@ namespace FreshDirect_CodeChallenge
 {
 	public class APIClient
 	{
-
+		// Constants
 		static string authUrl = "https://api.twitter.com/oauth2/token";
 		static string userTimelineUrl = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 		public delegate void handler(string bearerToken);
