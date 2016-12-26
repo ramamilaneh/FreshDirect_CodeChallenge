@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreshDirect_CodeChallenge", "FreshDirect_CodeChallenge\FreshDirect_CodeChallenge.csproj", "{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Release|iPhone.ActiveCfg = Release|iPhone
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Release|iPhone.Build.0 = Release|iPhone
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{ED964F97-A1F3-46CA-AFA6-6ABADDA531FC}.Debug|iPhone.Build.0 = Debug|iPhone
+	EndGlobalSection
+EndGlobal
