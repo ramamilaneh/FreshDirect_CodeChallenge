@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -117,6 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
+    <Compile Include="TweetsDataSource.cs" />
+    <Compile Include="Tw.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController.designer.cs">
@@ -128,7 +129,6 @@
     <Compile Include="TweetsViewController.designer.cs">
       <DependentUpon>TweetsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Tw.cs" />
     <Compile Include="Tw.designer.cs">
       <DependentUpon>Tw.cs</DependentUpon>
     </Compile>

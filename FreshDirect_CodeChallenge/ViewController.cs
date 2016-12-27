@@ -12,16 +12,12 @@ namespace FreshDirect_CodeChallenge
 		}
 		UITextField userNameTextField = new UITextField();
 		UIButton searchButton = new UIButton();
-
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			setupTextField();
 			setupSearchButton();
-			//APIClient.getTweets("michellebklynn", (jsonDic) =>
-			//{
-			//	Console.WriteLine(jsonDic);
-			//})	;
+
 		}
 
 		public override void DidReceiveMemoryWarning()
@@ -59,27 +55,20 @@ namespace FreshDirect_CodeChallenge
 
 		void Button_TouchUpInside(object sender, EventArgs e)
 		{
-			Console.WriteLine("Button Tapped");
+			
 			PerformSegue("showTweets", this);
+
 		}
 
 		public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
 		{
 			base.PrepareForSegue(segue, sender);
-
-			// set the View Controller that’s powering the screen we’re
-			// transitioning to
-
 			var dest = segue.DestinationViewController as TweetsViewController;
-
-			//set the Table View Controller’s list of phone numbers to the
-			// list of dialed phone numbers
-
 			if (dest != null)
 			{
-				string[] names = new string[3] { "Matt", "Joanne", "Robert" };
-
-				dest.tweetsOfUser = names;
+				
+				dest.userName = userNameTextField.Text;
+				//string[] names = new string[3] { "Matt", "Joanne", "Robert" };
 			}
 		}
 	}

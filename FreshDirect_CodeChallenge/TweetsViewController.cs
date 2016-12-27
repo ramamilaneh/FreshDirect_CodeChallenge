@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using CoreFoundation;
 using Foundation;
 using UIKit;
 
@@ -13,45 +15,77 @@ namespace FreshDirect_CodeChallenge
 		public TweetsViewController(IntPtr handle) : base (handle)
         {
 		}
-		public string [] tweetsOfUser { get; set; }
+		public string userName { get; set; }
+		//string[] tweetsOfUser = new string[]();
+		List<string> list = new List<string>();
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			// Perform any additional setup after loading the view, typically from a nib.
-			TableView.Source = new TweetsDataSource(this);
-			Console.WriteLine(tweetsOfUser.Length);
+			//Console.WriteLine(userName);
+			APIClient.getTweets(userName, (jsonDic) =>
+			 {
+				 for (int i = 0; i < jsonDic.Length; i++)
+				 {
+					 list.Add((string)jsonDic[i]["text"]);
+					 Console.WriteLine(list[i]);
+				 }
+
+				DispatchQueue.MainQueue.DispatchAsync(() =>
+				{
+                    Console.WriteLine(list.Count);
+					this.TableView.Source = new TweetsDataSource(list.ToArray());
+					this.TableView.ReloadData();	
+				});
+
+				//this.TableView.Source = new TweetsDataSource(list.ToArray());
+
+			 });
+			//tweetsOfUser = list.ToArray();
+			//Console.WriteLine(tweetsOfUser.Length);
+			//string[] names = new string[3] { "Matt", "Joanne", "Robert" };
+
+
+
+
+			//Console.WriteLine(tweetsOfUser.Length);
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			this.TableView.ReloadData();
+		}
+
+		public override void ViewDidAppear(bool animated)
+		{
+			base.ViewDidAppear(animated);
+			//APIClient.getTweets(userName, (jsonDic) =>
+			// {
+			//	 for (int i = 0; i < jsonDic.Length; i++)
+			//	 {
+			//		 list.Add((string)jsonDic[i]["text"]);
+			//		 Console.WriteLine(list[i]);
+			//	 }
+			//	 Console.WriteLine("1111");
+				 
+			//			 Console.WriteLine("2222");
+
+			//			 Console.WriteLine(list.Count);
+			//			 this.TableView.Source = new TweetsDataSource(list.ToArray());
+			//			 this.TableView.ReloadData();
+					
+			//	 //this.TableView.Source = new TweetsDataSource(list.ToArray());
+
+			// });
 		}
 
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
 		}
 
-		class TweetsDataSource : UITableViewSource
-		{
-			TweetsViewController controller;
-			public TweetsDataSource(TweetsViewController controller)
-			{
-				this.controller = controller;
-			}
 
-			public override nint RowsInSection(UITableView tableview, nint section)
-			{
-				return controller.tweetsOfUser.Length;
-			}
-
-			public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
-			{
-				// request a recycled cell to save memory
-				UITableViewCell cell = tableView.DequeueReusableCell("tweetCell");
-				// if there are no cells to reuse, create a new one
-				if (cell == null)
-					cell = new UITableViewCell(UITableViewCellStyle.Default, "tweetCell");
-				cell.TextLabel.Text = controller.tweetsOfUser[indexPath.Row];
-				return cell;
-			}
-		}
 	}
 }
 
