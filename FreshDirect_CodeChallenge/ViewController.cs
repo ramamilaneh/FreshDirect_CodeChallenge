@@ -19,6 +19,11 @@ namespace FreshDirect_CodeChallenge
 			setupSearchButton();
 
 		}
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			userNameTextField.Text = "";
+		}
 
 		public override void DidReceiveMemoryWarning()
 		{

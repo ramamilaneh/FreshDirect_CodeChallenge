@@ -39,7 +39,7 @@ namespace FreshDirect_CodeChallenge
 
 			 });
 			TableView.RowHeight = UITableView.AutomaticDimension;
-			TableView.EstimatedRowHeight = 60;
+			TableView.EstimatedRowHeight = 100;
 
 		}
 
