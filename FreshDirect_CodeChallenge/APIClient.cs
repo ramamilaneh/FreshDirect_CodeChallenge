@@ -56,7 +56,7 @@ namespace FreshDirect_CodeChallenge
 				var request1 = new RestRequest(Method.GET);
 				request1.AddHeader("Authorization", "Bearer " + bearerToken);
 				request1.AddParameter("screen_name", userName);
-				request1.AddParameter("count", "12");
+				request1.AddParameter("count", "50");
 
 				client1.ExecuteAsync(request1, response =>
 				{

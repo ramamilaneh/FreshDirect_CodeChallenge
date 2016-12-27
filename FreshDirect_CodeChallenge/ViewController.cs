@@ -66,9 +66,7 @@ namespace FreshDirect_CodeChallenge
 			var dest = segue.DestinationViewController as TweetsViewController;
 			if (dest != null)
 			{
-				
 				dest.userName = userNameTextField.Text;
-				//string[] names = new string[3] { "Matt", "Joanne", "Robert" };
 			}
 		}
 	}
