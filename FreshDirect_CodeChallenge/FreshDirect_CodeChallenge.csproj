@@ -99,6 +99,8 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Image.imageset\twitter.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -121,6 +123,11 @@
     </Compile>
     <Compile Include="APIClient.cs" />
     <Compile Include="Secrets.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\.DS_Store" />
+    <BundleResource Include="Resources\Images\twitter.png" />
+    <BundleResource Include="Resources\Images\twitter1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
