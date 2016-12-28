@@ -1,4 +1,6 @@
 ﻿using System;
+using CoreAnimation;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 
@@ -17,6 +19,7 @@ namespace FreshDirect_CodeChallenge
 			base.ViewDidLoad();
 			setupTextField();
 			setupSearchButton();
+			createGradientColor();
 
 		}
 		public override void ViewWillAppear(bool animated)
@@ -73,6 +76,22 @@ namespace FreshDirect_CodeChallenge
 			{
 				dest.userName = userNameTextField.Text;
 			}
+		}
+
+		public void createGradientColor()
+		{
+			var gradient = new CAGradientLayer();
+			gradient.Frame = View.Bounds;
+			//var firstColor = new UIColor(red: 122 / 255, green: 202 / 255, blue: 204 / 255, alpha: 1);
+			var firstColor = new UIColor(red: 126 / 255, green: 242 / 255, blue: 245 / 255, alpha: (System.nfloat)0.3);
+
+			gradient.StartPoint = new CGPoint( x:0.0,  y:0.0);
+			gradient.EndPoint = new CGPoint(x: 1.0, y: 1.0);
+			gradient.Locations = new NSNumber[] { new NSNumber(0),new NSNumber(0.3),new NSNumber(1)};
+			gradient.Colors = new CGColor[] { firstColor.CGColor, UIColor.Cyan.CGColor,UIColor.White.CGColor };
+			this.View.Layer.InsertSublayer(gradient, 0);
+
+
 		}
 	}
 }

@@ -25,7 +25,6 @@ namespace FreshDirect_CodeChallenge
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			Contract.Ensures(Contract.Result<UITableViewCell>() != null);
-			// request a recycled cell to save memory
 			UITableViewCell cell = tableView.DequeueReusableCell("tweetCell");
 			// if there are no cells to reuse, create a new one
 			if (cell == null)
@@ -35,6 +34,7 @@ namespace FreshDirect_CodeChallenge
 			cell.TextLabel.SizeToFit();
 			return cell;
 		}
+
 	}
 
 }
