@@ -3,6 +3,7 @@ using Foundation;
 using RestSharp;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using UIKit;
 
 namespace FreshDirect_CodeChallenge
 {
@@ -60,9 +61,17 @@ namespace FreshDirect_CodeChallenge
 
 				client1.ExecuteAsync(request1, response =>
 				{
-					Dictionary<string, object> [] responseJson = JsonConvert.DeserializeObject<Dictionary<string, object>[]>(response.Content);
+				if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					Dictionary<string, object>[] responseJson = JsonConvert.DeserializeObject<Dictionary<string, object>[]>(response.Content);
 					json(responseJson);
-					Console.WriteLine(responseJson.Length);
+				}
+				else {
+
+						Dictionary<string, object>[] responseJson = null;
+						json(responseJson);
+					}
+
 				});
 
 			});

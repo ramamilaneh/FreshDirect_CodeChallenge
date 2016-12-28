@@ -31,6 +31,7 @@ namespace FreshDirect_CodeChallenge
 				cell = new UITableViewCell(UITableViewCellStyle.Default, "tweetCell");
 			cell.TextLabel.Lines = 0;
 			cell.TextLabel.Text = TableItems[indexPath.Row];
+			cell.TextLabel.Font.WithSize(12);
 			cell.TextLabel.SizeToFit();
 			return cell;
 		}

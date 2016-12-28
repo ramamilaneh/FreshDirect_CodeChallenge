@@ -31,7 +31,6 @@ namespace FreshDirect_CodeChallenge
 		public override void DidReceiveMemoryWarning()
 		{
 			base.DidReceiveMemoryWarning();
-			// Release any cached data, images, etc that aren't in use.
 		}
 
 		public void setupTextField()
@@ -82,13 +81,13 @@ namespace FreshDirect_CodeChallenge
 		{
 			var gradient = new CAGradientLayer();
 			gradient.Frame = View.Bounds;
-			//var firstColor = new UIColor(red: 122 / 255, green: 202 / 255, blue: 204 / 255, alpha: 1);
-			var firstColor = new UIColor(red: 126 / 255, green: 242 / 255, blue: 245 / 255, alpha: (System.nfloat)0.3);
-
+			//var firstColor = new UIColor(red: 122 / 255, green: 202 / 255, blue: 204 / 255, alpha: (System.nfloat)0.2);
+			var firstColor = new UIColor(red: 126 / 255, green: 242 / 255, blue: 245 / 255, alpha: (System.nfloat)0.2);
+			var secondColor = new UIColor(red: 166 / 255, green: 255 / 255, blue: 231 / 255, alpha: (System.nfloat)0.1);
+			var thirdColor = new UIColor(red: 166 / 255, green: 255 / 255, blue: 231 / 255, alpha: (System.nfloat)0.2);
 			gradient.StartPoint = new CGPoint( x:0.0,  y:0.0);
 			gradient.EndPoint = new CGPoint(x: 1.0, y: 1.0);
-			gradient.Locations = new NSNumber[] { new NSNumber(0),new NSNumber(0.3),new NSNumber(1)};
-			gradient.Colors = new CGColor[] { firstColor.CGColor, UIColor.Cyan.CGColor,UIColor.White.CGColor };
+			gradient.Colors = new CGColor[] { firstColor.CGColor, thirdColor.CGColor,secondColor.CGColor };
 			this.View.Layer.InsertSublayer(gradient, 0);
 
 
