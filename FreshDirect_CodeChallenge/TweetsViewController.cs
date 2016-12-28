@@ -32,10 +32,15 @@ namespace FreshDirect_CodeChallenge
 					 var okAlertController = UIAlertController.Create("Alert", "Invalid User Name. Please go back and try again.", UIAlertControllerStyle.Alert);
 
 					 //Add Action
-					 okAlertController.AddAction(UIAlertAction.Create("Ok", UIAlertActionStyle.Default, null));
+						okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (obj) =>
+					 {
+						 NavigationController.PopToRootViewController(true);
+
+					 }));
 
 					 // Present Alert
 					 this.PresentViewController(okAlertController, true, null);
+					
 				 });
 
                     
