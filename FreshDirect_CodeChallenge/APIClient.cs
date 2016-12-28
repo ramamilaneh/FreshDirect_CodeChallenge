@@ -39,8 +39,6 @@ namespace FreshDirect_CodeChallenge
 			client.ExecuteAsync(request, response =>
 			{
 				Dictionary<string, string> responseJson = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content);
-
-				Console.WriteLine(responseJson["access_token"]);
 				completion(responseJson["access_token"]);
 
 			});
@@ -48,11 +46,12 @@ namespace FreshDirect_CodeChallenge
 
 		}
 
+
+		// Get the tweets by using the user name and the bearer token
 		public static void getTweets(string userName, completionHandler json )
 		{
 			APIClient.getBearerToken((bearerToken) =>
 			{
-				
 				var client1 = new RestClient(userTimelineUrl);
 				var request1 = new RestRequest(Method.GET);
 				request1.AddHeader("Authorization", "Bearer " + bearerToken);

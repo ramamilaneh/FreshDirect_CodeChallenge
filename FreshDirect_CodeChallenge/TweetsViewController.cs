@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using CoreFoundation;
-using Foundation;
 using UIKit;
 
 namespace FreshDirect_CodeChallenge
@@ -15,6 +13,7 @@ namespace FreshDirect_CodeChallenge
 		public TweetsViewController(IntPtr handle) : base(handle)
 		{
 		}
+
 		public string userName { get; set; }
 		List<string> list = new List<string>();
 
@@ -22,29 +21,30 @@ namespace FreshDirect_CodeChallenge
 		{
 			base.ViewDidLoad();
 
-
+			// Make API call to get the Tweets
 			APIClient.getTweets(userName, (jsonDic) =>
 			 {
-				 if (jsonDic == null)
+				// Check if there is an error, show alert message and dismiss the VC 
+				if (jsonDic == null)
 				 {
 					DispatchQueue.MainQueue.DispatchAsync(() =>
 				 {
 					 var okAlertController = UIAlertController.Create("Alert", "Invalid User Name. Please go back and try again.", UIAlertControllerStyle.Alert);
 
 					 //Add Action
-						okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, (obj) =>
+						okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Cancel, (obj) =>
 					 {
 						 NavigationController.PopToRootViewController(true);
 
 					 }));
 
 					 // Present Alert
-					 this.PresentViewController(okAlertController, true, null);
+					 PresentViewController(okAlertController, true, null);
 					
 				 });
 
-                    
 				 }
+				// if there is no error create an array of tweets and populate the table
 				 for (int i = 0; i < jsonDic.Length; i++)
 				 {
 					 list.Add((string)jsonDic[i]["text"]);
